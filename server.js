@@ -151,7 +151,7 @@ app.post("/favorites/id", (req, res) => {
   }
 });
 
-app.post("/favorites/next", (req, res) => {
+app.post("/favorites/next", cors(), (req, res) => {
   const id = req.body.id.toString();
 
   request(
@@ -168,6 +168,7 @@ app.post("/favorites/next", (req, res) => {
       };
 
       res.send(pic);
+      console.error(error);
     }
   );
 });
