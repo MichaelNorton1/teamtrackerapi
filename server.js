@@ -19,8 +19,8 @@ const knex = require("knex")({
   },
 });
 
-app.listen(process.env.port, () => {
-  console.log(`app is running on Port ${process.env.port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`app is running on Port ${process.env.PORT}`);
 });
 
 app.post("/favorites", (req, res) => {
