@@ -18,6 +18,7 @@ const knex = require("knex")({
     database: "teams",
   },
 });
+app.options("/signin", cors());
 
 app.listen(process.env.PORT, () => {
   console.log(`app is running on Port ${process.env.PORT}`);
