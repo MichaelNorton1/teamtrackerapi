@@ -19,6 +19,11 @@ const knex = require("knex")({
   },
 });
 app.options("/signin", cors());
+app.options("/register", cors());
+app.options("/favorites", cors());
+app.options("/favorites/id", cors());
+app.options("/favorites/next", cors());
+app.options("/", cors());
 
 app.listen(process.env.PORT, () => {
   console.log(`app is running on Port ${process.env.PORT}`);
