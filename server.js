@@ -8,7 +8,12 @@ const saltRounds = 10;
 const { key, password } = require("./config.js");
 app.use(
   cors({
-    origin: "*",
+    origin: [
+      "https://michaelnorton1.github.io/TeamTracker/",
+      "https://michaelnorton1.github.io",
+      "https://michaelnor",
+    ],
+    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
   })
 );
 app.use(express.urlencoded({ extended: true }));
