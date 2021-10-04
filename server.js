@@ -6,16 +6,7 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const { key, password } = require("./config.js");
-app.use(
-  cors({
-    origin: [
-      "https://michaelnorton1.github.io/TeamTracker/",
-      "https://michaelnorton1.github.io",
-      "https://michaelnor",
-    ],
-    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
-  })
-);
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const knex = require("knex")({
