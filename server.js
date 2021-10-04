@@ -148,7 +148,7 @@ app.post("/favorites/next", (req, res) => {
 
   request(
     {
-      url: `https://www.thesportsdb.com/api/v1/json/${key.key}/eventsnext.php?id=${id}`,
+      url: `https://www.thesportsdb.com/api/v1/json/4013016/eventsnext.php?id=${id}`,
       json: true,
     },
     (error, response) => {
