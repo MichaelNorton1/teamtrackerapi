@@ -67,7 +67,7 @@ app.post("/register", (req, res) => {
           .then(trx.commit)
           .catch(trx.rollback);
       })
-      .catch((err) => res.status(400).json("already found")
+      .catch((err) => console.log(err))
       .then((data) => {
         knex("users")
           .select("userid")
