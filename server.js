@@ -22,7 +22,9 @@ const knex = require("knex")({
 app.listen(process.env.PORT, () => {
   console.log(`app is running on Port ${process.env.PORT}`);
 });
-
+app.get("/", (req, res) => {
+  res.send("wassup");
+});
 app.post("/favorites", (req, res) => {
   const teams = req.body;
 
@@ -148,7 +150,7 @@ app.post("/favorites/next", (req, res) => {
 
   request(
     {
-      url: `https://www.thesportsdb.com/api/v1/json/4013016/eventsnext.php?id=${id}`,
+      url: `https://www.thesportsdb.com/api/v1/json/${key.key}/eventsnext.php?id=${id}`,
       json: true,
     },
     (error, response) => {
