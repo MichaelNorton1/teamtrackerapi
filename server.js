@@ -32,6 +32,7 @@ app.get("/", (req, res) => {
 });
 app.post("/favorites", (req, res) => {
   const teams = req.body;
+  console.log(req.body);
 
   teams.forEach((element) => {
     knex
