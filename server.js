@@ -18,12 +18,13 @@ const knex = require("knex")({
     database: "teams",
   },
 });
-app.options("/signin", cors());
-app.options("/register", cors());
-app.options("/favorites", cors());
-app.options("/favorites/id", cors());
-app.options("/favorites/next", cors());
-app.options("/", cors());
+app.use(function (req, res, next) {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://michaelnorton1.github.io/TeamTracker/"
+  );
+  next();
+});
 
 app.listen(process.env.PORT, () => {
   console.log(`app is running on Port ${process.env.PORT}`);
@@ -153,7 +154,7 @@ app.post("/favorites/id", (req, res) => {
 
 app.post("/favorites/next", cors(), (req, res) => {
   const id = req.body.id.toString();
-
+  console.log(req.body);
   request(
     {
       url: `https://www.thesportsdb.com/api/v1/json/${key.key}/eventsnext.php?id=${id}`,
