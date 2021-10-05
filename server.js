@@ -16,13 +16,13 @@ const knex = require("knex")({
     ssl: true,
   },
 });
-app.use(function (req, res, next) {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://michaelnorton1.github.io/TeamTracker/"
-  );
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.setHeader(
+//     "Access-Control-Allow-Origin",
+//     "https://michaelnorton1.github.io/TeamTracker/"
+//   );
+//   next();
+// });
 
 app.listen(process.env.PORT, () => {
   console.log(`app is running on Port ${process.env.PORT}`);
@@ -165,9 +165,8 @@ app.post("/favorites/next", cors(), (req, res) => {
         event: response.body.events[0].strEvent,
         date: response.body.events[0].dateEvent,
       };
-      console.log(pic);
+
       res.send(pic);
-      console.error(error);
     }
   );
 });
