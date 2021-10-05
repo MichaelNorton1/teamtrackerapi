@@ -154,10 +154,10 @@ app.post("/favorites/id", (req, res) => {
 
 app.post("/favorites/next", cors(), (req, res) => {
   const id = req.body.id.toString();
-  console.log(req.body);
+  console.log(req.body, "this is the body");
   request(
     {
-      url: `https://www.thesportsdb.com/api/v1/json/${key.key}/eventsnext.php?id=${id}`,
+      url: `https://www.thesportsdb.com/api/v1/json/4013016/eventsnext.php?id=${id}`,
       json: true,
     },
     (error, response) => {
@@ -167,7 +167,7 @@ app.post("/favorites/next", cors(), (req, res) => {
         event: response.body.events[0].strEvent,
         date: response.body.events[0].dateEvent,
       };
-
+      console.log(pic);
       res.send(pic);
       console.error(error);
     }
