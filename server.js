@@ -126,12 +126,10 @@ app.delete("/favorites", (req, res) => {
         .select("*")
         .from("teams")
         .where({ strteam: req.body.team, id: req.body.id })
-        .then((data) => console.log(data))
         .del()
         .then(trx.commit)
         .catch(trx.rollback);
     })
-
     .catch((err) => console.log(err));
   res.status(200).send({ message: `${req.body.team} deleted` });
 });
