@@ -39,7 +39,7 @@ app.post("/favorites", (req, res) => {
       .transaction((trx) => {
         trx
           .insert({
-            ideam: element.idTeam,
+            idteam: element.idTeam,
             strteam: element.strTeam,
             strteamBadge: element.strTeamBadge,
             id: element.id,
