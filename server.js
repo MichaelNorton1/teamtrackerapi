@@ -32,7 +32,6 @@ app.get("/", (req, res) => {
 });
 app.post("/favorites", (req, res) => {
   const teams = req.body;
-  console.log(req.body);
 
   teams.forEach((element) => {
     knex
@@ -153,6 +152,7 @@ app.post("/favorites/id", (req, res) => {
 });
 
 app.post("/favorites/next", cors(), (req, res) => {
+  console.log(req.body);
   const id = req.body.id.toString();
   console.log(req.body, "this is the body");
   request(
