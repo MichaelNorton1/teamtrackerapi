@@ -125,7 +125,8 @@ app.delete("/favorites", (req, res) => {
       trx
         .select("*")
         .from("teams")
-        .where({ strTeam: req.body.team, id: req.body.id })
+        .where({ strteam: req.body.team, id: req.body.id })
+        .then((data) => console.log(data))
         .del()
         .then(trx.commit)
         .catch(trx.rollback);
