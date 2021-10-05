@@ -12,10 +12,8 @@ app.use(express.json());
 const knex = require("knex")({
   client: "pg",
   connection: {
-    host: "127.0.0.1",
-    user: "michaelnorton",
-    password: password,
-    database: "teams",
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
   },
 });
 app.use(function (req, res, next) {
