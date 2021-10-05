@@ -154,14 +154,14 @@ app.post("/favorites/id", (req, res) => {
 app.post("/favorites/next", cors(), (req, res) => {
   console.log(req.body);
   const id = req.body.id.toString();
-  console.log(req.body, "this is the body");
+
   request(
     {
       url: `https://www.thesportsdb.com/api/v1/json/4013016/eventsnext.php?id=${id}`,
       json: true,
     },
     (error, response) => {
-      console.log(response.body);
+      console.log(response.body.events[0]);
       const pic = {
         pic: response.body.events[0].strThumb,
         event: response.body.events[0].strEvent,
