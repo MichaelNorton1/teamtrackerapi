@@ -82,6 +82,7 @@ app.post("/register", (req, res) => {
             return res.status(200).json(data[0]);
           });
       })
+      .catch((err) => console.log(err))
 
       .catch(res.status(400).json("already found"));
 
@@ -106,7 +107,8 @@ app.post("/signin", (req, res) => {
       } else {
         return res.status(400).json(" wrong credents");
       }
-    });
+    })
+    .catch((err) => console.log(err));
 
   knex
     .raw("DELETE from teams a using teams b where a=b and a.ctid < b.ctid;")
