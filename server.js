@@ -41,7 +41,7 @@ app.post("/favorites", (req, res) => {
           .insert({
             idteam: element.idTeam,
             strteam: element.strTeam,
-            strteamBadge: element.strTeamBadge,
+            strteambadge: element.strTeamBadge,
             id: element.id,
           })
           .into("teams")
