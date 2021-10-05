@@ -72,7 +72,7 @@ app.post("/register", (req, res) => {
           .then(trx.commit)
           .catch(trx.rollback);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log("first", err))
       .then((data) => {
         knex("users")
           .select("userid")
@@ -84,7 +84,7 @@ app.post("/register", (req, res) => {
       })
       .catch((err) => console.log(err))
 
-      .catch(res.status(400).json("already found"));
+      .catch((err) => console.log("second", err));
 
     // Store hash in your password DB.
   });
