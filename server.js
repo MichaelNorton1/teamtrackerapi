@@ -28,6 +28,10 @@ app.listen(process.env.PORT, () => {
   console.log(`app is running on Port ${process.env.PORT}`);
 });
 app.get("/", (req, res) => {
+  knex
+    .raw("DELETE from teams a using teams b where a=b and a.ctid < b.ctid;")
+
+    .catch((err) => console.log(err));
   res.send("wassup");
 });
 app.post("/favorites", (req, res) => {
