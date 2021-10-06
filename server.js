@@ -15,6 +15,7 @@ const knex = require("knex")({
     connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false },
   },
+  pool: { min: 0, max: 50 },
 });
 // app.use(function (req, res, next) {
 //   res.setHeader(
@@ -36,7 +37,7 @@ app.get("/", (req, res) => {
 });
 app.post("/favorites", (req, res) => {
   const teams = req.body;
-  console.log(teams);
+
   teams.forEach((element) => {
     knex
       .transaction((trx) => {
@@ -82,7 +83,6 @@ app.post("/register", (req, res) => {
           .select("userid")
           .where("email", req.body.email)
           .then((data) => {
-            console.log(data[0].userid);
             return res.status(200).json(data[0]);
           });
       })
@@ -156,7 +156,6 @@ app.post("/favorites/id", (req, res) => {
 });
 
 app.post("/favorites/next", cors(), (req, res) => {
-  console.log(req.body);
   const id = req.body.id.toString();
 
   request(
@@ -165,7 +164,6 @@ app.post("/favorites/next", cors(), (req, res) => {
       json: true,
     },
     (error, response) => {
-      console.log(response.body.events[0]);
       const pic = {
         pic: response.body.events[0].strThumb,
         event: response.body.events[0].strEvent,
