@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 });
 app.post("/favorites", (req, res) => {
   const teams = req.body;
-
+  console.log(teams);
   teams.forEach((element) => {
     knex
       .transaction((trx) => {
