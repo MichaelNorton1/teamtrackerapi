@@ -77,7 +77,7 @@ app.post("/register", (req, res) => {
           .then(trx.commit)
           .catch(trx.rollback);
       })
-      .catch((err) => console.log("first", err))
+      .catch((err) => res.status(400))
       .then((data) => {
         knex("users")
           .select("userid")
