@@ -17,13 +17,6 @@ const knex = require("knex")({
   },
   pool: { min: 0, max: 50 },
 });
-// app.use(function (req, res, next) {
-//   res.setHeader(
-//     "Access-Control-Allow-Origin",
-//     "https://michaelnorton1.github.io/TeamTracker/"
-//   );
-//   next();
-// });
 
 app.listen(process.env.PORT, () => {
   console.log(`app is running on Port ${process.env.PORT}`);
@@ -33,7 +26,7 @@ app.get("/", (req, res) => {
     .raw("DELETE from teams a using teams b where a=b and a.ctid < b.ctid;")
 
     .catch((err) => console.log(err));
-  res.send("wassup");
+  res.send("");
 });
 app.post("/favorites", (req, res) => {
   const teams = req.body;
